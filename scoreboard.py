@@ -1,12 +1,6 @@
 from turtle import Turtle
 
 
-def get_high_score():
-    with open("highscore.txt") as file:
-        hs = file.read()
-        return int(hs) if hs else 0
-
-
 class Scoreboard(Turtle):
 
     def __init__(self):
@@ -16,7 +10,8 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(x=0, y=260)
         self.score = 0
-        self.high_score = get_high_score()
+        with open("highscore.txt") as file:
+            self.high_score = int(file.read())
         self.update_score()
 
     def update_score(self):
